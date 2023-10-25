@@ -1,0 +1,516 @@
+run -> npm create vite@latest
+select -> y
+then choose react 
+then choose javascript 
+and now you will have your project created 
+
+-----------------------------
+-now cd over to your app name -[which by default will be vite-project] + and then run command --> npm install 
+
+-now run the react app using -> command ---> npm run dev and visit the server address to see if our app is working
+ server address example-> http://localhost:5173/
+
+-now delete unnecessary files that include :-> in the src folder -> 
+in app.jsx remove everything inside <> </> and also remove the imports for react logo and react vite logo and count , setCount part
+
+-remove everything from app.css
+
+-delete the index.css file 
+
+-and remove the import of ---> index.css from ---> main.jsx file 
+
+*************************************************************************************************************************************
+now we have a clean react app and we can start to code 
+
+<=============================> 
+
+firstly we import the necessary packages for our dashboard like recharts and icons -> 
+
+-In new termional run command --> npm install recharts react-icons
+
+Now check that we have our two packages installed or not inside package.json file  once you see them there we are good to go
+
+============================================================================================================
+
+inside the src folder we create 3 components -> Header.jsx , Sidebar.jsx , Home.jsx
+
+----------------
+
+-Now inside our header.jsx  , Sidebar.jsx , Home.jsx ->  run command to create a react component-> rfce
+
+-Now we create a layout -> go to app.jsx and create a new container with className <div className='grid-container'> <div/>
+
+-Now we add some css for this  in the app.css file -> 
+body{
+    margin:0;
+    padding: 0;
+    background-color: #1d2634;
+    color: #9e9ea4;
+    font-family: 'Montserrat', 'sans-serif';
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas: 
+    'sidebar header header header'
+    'sidebar main main main';
+    height: 100vh;
+}
+
+-Now we import all our components inside app.jsx ->{check that an import statement for these comes at the top}
+     <Header/>
+     <Sidebar/>
+     <Home/>
+
+
+-Now see the sample text for the components will be displayed on the app screen 
+
+-Now after that - we start defining the Header 
+in Header file :
+import the following icons ->import {BsFillBellFill , BsFillEnvelopeFill , BsPersonCircle , BsSearch , BsJustify} from 'react-icons/bs'
+
+now inside the component we start the coding -> replace the div with header  and className -  header 
+i.e--->  <header className='header'>      </header>
+
+inside this add a div with className menu-icon->
+<div className='menu-icon'>
+{/* to show our sidebar on smaller devices we use this  BsJustify */}
+ <BsJustify className='icon'/>
+</div>
+
+now add another div ->   
+<div className='header-left'>
+  <BsSearch className='icon'/>
+</div>
+
+Now add another div -> 
+<div className='header-right'>
+ <BsFillBellFill className='icon'/>
+ <BsFillEnvelopeFill className='icon'/>
+ <BsPersonCircle className='icon'/>
+</div>
+
+This is the header code now we will write the css code for it in our app.css-> 
+.icon{
+    vertical-align: middle;
+    line-height: 1px;
+    font-size: 20px;
+}
+.icon_header{
+    vertical-align: middle;
+    line-height: 1px;
+    font-size: 26px;
+}
+.icon, .icon_header{
+    margin-right: 5px ;
+}
+
+/* Header */
+.header{
+    grid-area: header;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px 0 30px;
+    box-shadow: 0 6px 7px -3px rgba(0,0,0,0.35);
+}
+
+.menu-icon{
+    display: none;
+}
+/* End Header */
+
+--->NOW WE MOVE TO THE SIDEBAR PART:=>
+in the Sidebar.jsx -> create an aside element i.e-> <aside> </aside>
+
+inside this aside element  ->  add two nested div i.e -> 
+<aside id='sidebar'> 
+     <div className='sidebar-title'>
+        <div className='sidebar-brand'>
+
+        </div>
+     </div>
+    </aside>
+
+now we import the react icons here ->  import { BsCart3  } from 'react-icons/bs'
+and also update these divs we added above to -> 
+<aside id='sidebar'> 
+     <div className='sidebar-title'>
+        <div className='sidebar-brand'>
+          <BsCart3 className='icon_header'/> SHOP
+        </div>
+        <span className='icon close_icon'> X</span>
+     </div>
+    </aside>
+
+now below our outer div and above aside we create a list -> 
+ <ul className='sidebar-list'>
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsCart3 className='icon'/> Dashboard 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsCart3 className='icon'/> Products 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsCart3 className='icon'/> Categories
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsCart3 className='icon'/> Customers 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsCart3 className='icon'/> Inventory 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsCart3 className='icon'/> Reports
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsCart3 className='icon'/> Setting
+              </a>
+        </li>
+     </ul>
+
+ Now we import the icons -> 
+ import { BsCart3 ,BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill , BsPeopleFill, BsListCheck , BsMenuButtonWideFill , 
+         BsFillGearFill } from 'react-icons/bs'
+        
+and then we update the icon names inside our list -> 
+ <aside id='sidebar'> 
+     <div className='sidebar-title'>
+        <div className='sidebar-brand'>
+          <BsCart3 className='icon_header'/> SHOP
+        </div>
+        <span className='icon close_icon'> X</span>
+     </div>
+
+     <ul className='sidebar-list'>
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsGrid1X2Fill className='icon'/> Dashboard 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsFillArchiveFill className='icon'/> Products 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsFillGrid3X3GapFill className='icon'/> Categories
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsPeopleFill className='icon'/> Customers 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsListCheck className='icon'/> Inventory 
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsMenuButtonWideFill className='icon'/> Reports
+              </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+              <a href="">
+               <BsFillGearFill className='icon'/> Setting
+              </a>
+        </li>
+     </ul>
+    </aside>
+
+
+    ----------now we apply the css code in app.css for our -> 
+i.e->
+
+/* Sidebar */
+#sidebar{
+    grid-area: sidebar;
+    height: 100%;
+    background-color: #263043;
+    overflow-y: auto;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.sidebar-title{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px 0px 30px;
+    margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+    display: none;
+}
+
+.sidebar-brand {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sidebar-list{
+    padding: 0;
+    list-style-type: none;
+}
+
+.sidebar-list-item{
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+}
+
+.sidebar-list-item:hover{
+    background-color: rgba(255, 255, 255,0.2);
+    cursor: pointer;
+}
+
+.sidebar-list-item > a {
+    text-decoration: none;
+    color:  #9e9ea4;
+}
+
+.sidebar-responsive {
+    display: inline !important;
+    position: absolute;
+    z-index: 12 !important;
+} 
+/* Sidebar End */
+
+now check the updated final view 
+
+=====================>
+Now lets add our home.jsx component
+
+inside our home.jsx:-
+
+have  a main element -> <main> </main>
+
+inside it -> 
+<main className='main-container'>
+        <div className='main-title'>
+            <h3>DASHBOARD</h3>
+        </div>
+
+        <div className=' main-cards'>
+            <div className='card-inner'>
+              <h3>PRODUCTS</h3>
+              <></>
+            </div>
+            <h1>300</h1>
+        </div>
+    </main>
+
+now we import the following icons in our home.jsx to be used ->
+import { BsFillArchiveFill, BsFillGrid3X3GapFill , BsPeopleFill, BsFillBellFill } from 'react-icons/bs'
+
+now we use these icons -> 
+ <div className=" main-cards">
+                   <div className="card">
+                      <div className="card-inner">
+                        <h3>PRODUCTS</h3>
+                        <BsFillArchiveFill className="card_icon" />
+                      </div>
+                      <h1>300</h1>
+                   </div>
+
+                   <div className="card">
+                      <div className="card-inner">
+                        <h3>CATEGORIES</h3>
+                        <BsFillGrid3X3GapFill className="card_icon" />
+                      </div>
+                      <h1>12</h1>
+                   </div>
+                   <div className="card">
+                      <div className="card-inner">
+                        <h3>CUSTOMERS</h3>
+                        <BsPeopleFill className="card_icon" />
+                      </div>
+                      <h1>33</h1>
+                   </div>
+                   <div className="card">
+                      <div className="card-inner">
+                        <h3>ALERTS</h3>
+                        <BsFillBellFill className="card_icon" />
+                      </div>
+                      <h1>42</h1>
+                   </div>
+      </div>
+
+NOW after checking the changes applied we are good to go 
+
+***AND WE ARE NOW READY TO APPLY OUR-----------> CHARTS NOW***
+
+*->Now below our cards section we create another div and name its class as charts 
+i.e--> <div className='charts'> </div>
+
+[To Create CHARTS WE CAN SIMPLY VISIT RECHARTS AND MAKE THEM FROM THERE :--
+go to recharts 
+now search for simple bar charts 
+firstly now copy the data code and paste it in our code on top of  our return() function in the home.jsx file 
+
+then in the charts div  we created we will copy and paste the code from recharts -> simplebarcharts -> RESPONSIVECONTAINER part
+
+then we add the import statement for them at the top 
+]
+
+-Now our second chart will be line chart here -> from recharts -> simple line chart we will follow the same procedure as above 
+but as we already have copied our data we will now simply just copy the data for our chart i.e -> RESPONSIVECONTAINER part from rechart
+and paste the code just below the first RESPONSIVECONTAINER in our code 
+
+**remember to check and update the import statement part accordingly which in this case was -> LineChart and Line to be added 
+
+Now we just use the css for our main part in the app.css file create a main start and main end section  
+
+-->
+/* Main Start */
+.main-container {
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px 20px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.main-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin:15px 0;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.card:first-child{
+    background-color: #2962ff;
+}
+
+.card:nth-child(2){
+    background-color: #ff6d00;
+}
+
+.card:nth-child(3){
+    background-color: #2e7d32;
+}
+
+.card:nth-child(4){
+    background-color: #d50000;
+}
+
+.card-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-inner > .card_icon {
+    font-size: 25px;
+}
+
+.charts{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+    margin-top: 60px;
+    height: 300px;
+}
+
+/* Main END */
+
+
+NOW CHECK THAT IF CARDS ARE AVAILABLE / SHOWING ON THE SCREEN  AND IF SO WE ARE GOOD TO GO 
+
+--------------------------------> 
+
+Now even if we have the cards there we don't have them made responsive so now we make these cards responsive 
+we wite the following code in our app.css {we are simply writing media queries}
+
+/* Medium <= 992px */
+@media screen and (max-width:992px) {
+    .grid-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 3fr;
+        grid-template-areas: 'header'
+                             'main';
+    }
+
+    #sidebar{
+        display:none;
+    }
+
+    .menu-icon{
+        display: incline;
+    }
+
+    .sidebar-title > span {
+        display: inline;
+    }
+}
+
+this will give our side bar disappear and appear view according to the size of the device 
+
+but now for the options button to make the sidebar appear we need to create a function inside our app.jsx and trigger it on the tap 
+so that the final result will look like a side bar is appearing on the tap of a button in the smaller devices 
+
+-------------------------------------------> 
+So Now in our app.jsx above the return statement we make the use of useState hook and trigger a function to open the sidebar onclick
+
+ const [openSidebarToggle , setOpenSidebarToggle] = useState(false);
+
+ const OpenSidebar = () => {
+  setOpenSidebarToggle(!openSidebarToggle);
+ }
+
+
+ Now after defining the function we now trigger this function from our header component inside this file only 
+ i.e -->  <Header OpenSidebar = {OpenSidebar}/>
+
+ now in our header.jsx file -> we pass this OpenSidebar to the function 
+ and add a onClick event handler to  the BsJustify icon -> <BsJustify className='icon' onClick={OpenSidebar}/>
+
+ now in the app.jsx -> <Sidebar openSidebarToggle={openSidebarToggle}/>
+
+ 
+
+ ultimately adding a trigger effect onto the side bar 
